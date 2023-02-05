@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <style>
+      body {
+        background: linear-gradient(to bottom, #3f87a6, #ebf8e1);
+        height: 100vh;
+      }
+      
+      h1 {
+        color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mt-5">Prediction Result</h1>
+      {% if loading %}
+        <div class="d-flex justify-content-center mt-5">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      {% endif %}
+      {% if prediction %}
+        <div class="d-flex flex-column align-items-center mt-5">
+          <img src="{{ url_for('static', filename = 'uploads/' + filename) }}" alt="uploaded image" class="img-fluid mb-3" />
+          <p class="lead">The prediction is: {{ prediction }}</p>
+        </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
